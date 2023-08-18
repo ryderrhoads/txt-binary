@@ -1,3 +1,5 @@
+import datetime
+
 def text_to_binary(text):
     binary_text = ' '.join(format(ord(char), '08b') for char in text)
     return binary_text
@@ -7,12 +9,16 @@ def binary_to_text(binary_text):
     text = ''.join(chr(int(binary, 2)) for binary in binary_words)
     return text
 
+def get_current_date_formatted():
+    current_date = datetime.datetime.now()
+    return current_date.strftime('%m%d%y') + ".txt"
+
 def main():
     choice = input("Enter 'encode' to encode text to binary or 'decode' to decode binary to text: ")
 
     if choice.lower() == 'encode':
         input_file_path = input("Enter the path to the input text file: ")
-        output_file_path = input("Enter the path for the output binary file: ")
+        output_file_path = get_current_date_formatted()
 
         with open(input_file_path, 'r') as file:
             content = file.read()
@@ -25,7 +31,7 @@ def main():
 
     elif choice.lower() == 'decode':
         input_file_path = input("Enter the path to the input binary file: ")
-        output_file_path = input("Enter the path for the output text file: ")
+        output_file_path = "output.txt"
 
         with open(input_file_path, 'r') as file:
             binary_content = file.read()
