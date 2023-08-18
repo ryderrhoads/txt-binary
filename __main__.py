@@ -11,7 +11,7 @@ def binary_to_text(binary_text):
 
 def get_current_date_formatted():
     current_date = datetime.datetime.now()
-    return current_date.strftime('%m%d%y') + ".txt"
+    return current_date.strftime('%d%m%y') + ".txt"
 
 def main():
     choice = input("Enter 'encode' to encode text to binary or 'decode' to decode binary to text: ")
